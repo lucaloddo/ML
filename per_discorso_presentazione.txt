@@ -1,0 +1,75 @@
+Slide 2
+Affronteremo la presentazione di questo progetto suddividendolo in diverse parti
+
+Slide 3
+In questo progetto, viene utilizzato un dataset che contiene le dimensioni fisiche di diversi esemplari
+di bradipi, suddivisi in tridattili e didattili.
+
+Slide 4
+L'obiettivo del progetto è riuscire a predire al meglio la specie di appartenenza di un bradipo
+per mezzo di due modelli di ML: Decision Tree e SVM
+
+Slide 5
+E' stata svolta dul dataset preso in esame un'analisi preliminare dei dati..
+Da una prima analisi, il dataset risultava avere dei valori negativi nella colonna tail_length_cm,
+perciò abbiamo deciso di eliminare le istanze con questo tipo di valori e quindi si è passati da 5000 
+istanze a 4566. Dopo la cancellazione dei dati, abbiamo ricontrollato il bilanciamento della variabile 
+target, costituita dalla label three_toed e two_toed, rispettivamente al 58% e 42% dei
+dati. Infine, abbiamo deciso di ridurre il dataset rimuovendo tre feature (index, endangered, sub_specie)
+in quanto inutili ai fini dello scopo del progetto.
+
+Slide 6
+Abbiamo effettuato uno split del dataset in due dataset più piccoli nella misura del 70% e 30%,
+rispettivamente chiamati training set e test set, in modo tale da poter addestrare i modelli sul primo ed
+effettuare le previsioni col secondo.
+
+Slide 7
+Il primo modello scelto per la predizione è il Decision Tree, facilmente interpretabile in quanto fornisce
+una struttura che può essere mostrata a esperti e non e fa capire bene come il modello effettua 
+le previsioni.
+Il modello seleziona automaticamente le features più rilevanti per effettuare le previsioni.
+Questo fa risparmiare tempo ed "energie" rispetto alle operazioni di selezione delle features.
+
+Sul Decision tree generato è stata effettuata una operazione di cut, relativamente all'analisi dei parametri 
+di complessità ed è qui riportata sua versione dopo il taglio e l'accuratezza finale del modello è risultata
+pari a 96.47%, con una riduzione di solo lo 0.29%
+
+Slide 8
+Il secondo modello scelto per predire la specie degli esemplari è il Support Vector Machine.
+Questo modello è stato scelto per la sua elevata efficienza nel separare dati complessi inseriti in spazi 
+ad alta dimensionalità. Inoltre è stato scelto perchè dall'analisi delle features, soprattutto per mezzo
+dello scatterplot, si mostrava come le due variabili tail_length_cm e size_cm permettessero di 
+rappresentare le istanze sul piano con un alto grado di separabilità.
+
+Sul modello SVM è stato effettuato il tuning degli iperparametri e da questa operazione abbiamo ottenuto 
+che la funzione kernel migliore risulta essere quella radiale, che il costo migliore è pari a 10 e la gamma
+pari a 0.5.
+
+Questo modello ha presentato una accuratezza finale o globale pari a 97.57%.
+
+Slide 9
+Oltre alle misure di accuratezza sono state indagate tra le misure di performance anche la: Precision,
+Recall e F1-Measure. Tali misure sono state effettuate per le singole classi, infine una volta ottenuti
+i risultati si è calcolata la media di tali valori per i singoli modelli per definire quale fosse il 
+modello più performante.
+
+Dai dati si può notare che il modello SVM risulta essere sempre più performante rispetto al Decision tree,
+le performance dell' SVM risultano essere sempre migliori di circa l'1% anche se questo modello è più
+oneroso dal punto di vista computazionale.
+
+Silde 10
+Per valutare le performance dei modelli abbiamo eseguito il calcolo delle curve ROC e dei corrispettivi 
+AUC, che rappresentano l'area sottesa alla curva ROC, questa area ci permette di capire quanto il modello 
+classifichi efficacemente le istanze. Vediamo dal grafico, dove abbiamo in verde la curva ROC del Decision 
+Tree e in blu quella dell'SVM, che l'AUC di SVM risulta essere maggiore di 0.03 e quindi ne possiamo 
+dedurre che il modello riesca a classificare meglio le istanze rispetto a Decision Tree.
+
+Slide 11
+In conclusione possiamo affermare che i modelli scelti hanno un ottimo grado di accuratezza e performance.
+
+SVM performa leggermente meglio di Decision Tree, nell’ordine di circa l’1% sia nelle misure di performance
+di classe (Precision, Recall e F1) sia globali (Accuracy e Macro-Average).
+
+A livello computazionale, però, Decision Tree è decisamente più efficiente in quanto il tuning di SVM è 
+molto più oneroso.
+
